@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net"
 	"fmt"
+	"net"
 )
 
-func main()  {
+func main() {
 	// 指定服务器 通信协议、IP地址、port。 创建一个用于监听的 socket
 	listener, err := net.Listen("tcp", "127.0.0.1:8000")
 	if err != nil {
@@ -30,7 +30,7 @@ func main()  {
 		fmt.Println("conn.Read err:", err)
 		return
 	}
-	conn.Write(buf[:n])		// 读多少写多少。原封不动
+	conn.Write(buf[:n]) // 读多少写多少。原封不动
 	// 处理数据—— 打印
 	fmt.Println("服务器读到数据：", string(buf[:n]))
 }

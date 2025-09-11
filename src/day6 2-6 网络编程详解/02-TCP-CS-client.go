@@ -1,11 +1,11 @@
 package main
 
 import (
-	"net"
 	"fmt"
+	"net"
 )
 
-func main()  {
+func main() {
 	// 指定 服务器 IP + port 创建 通信套接字。
 	conn, err := net.Dial("tcp", "127.0.0.1:8000")
 	if err != nil {
@@ -24,5 +24,6 @@ func main()  {
 		fmt.Println("conn.Read err:", err)
 		return
 	}
+
 	fmt.Println("服务器回发：", string(buf[:n]))
 }
