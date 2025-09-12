@@ -1,13 +1,13 @@
 package main
 
 import (
-	"os"
 	"fmt"
-	"net"
 	"io"
+	"net"
+	"os"
 )
 
-func sendFile(conn net.Conn, filePath string)  {
+func sendFile(conn net.Conn, filePath string) {
 	// 只读打开文件
 	f, err := os.Open(filePath)
 	if err != nil {
@@ -37,8 +37,8 @@ func sendFile(conn net.Conn, filePath string)  {
 	}
 }
 
-func main()  {
-	list := os.Args		// 获取命令行参数
+func main() {
+	list := os.Args // 获取命令行参数
 
 	if len(list) != 2 {
 		fmt.Println("格式为：go run xxx.go 文件绝对路径")
