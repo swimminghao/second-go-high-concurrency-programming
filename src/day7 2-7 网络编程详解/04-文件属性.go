@@ -1,12 +1,12 @@
 package main
 
 import (
-	"os"
 	"fmt"
+	"os"
 )
 
-func main()  {
-	list := os.Args			// 获取命令行参数
+func main() {
+	list := os.Args // 获取命令行参数
 
 	if len(list) != 2 {
 		fmt.Println("格式为：go run xxx.go 文件名")
@@ -22,4 +22,5 @@ func main()  {
 	}
 	fmt.Println("文件名：", fileInfo.Name())
 	fmt.Println("文件大小：", fileInfo.Size())
+	//fmt.Println("文件路径：", fileInfo.())
 }

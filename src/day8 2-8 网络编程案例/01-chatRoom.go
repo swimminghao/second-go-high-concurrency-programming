@@ -99,6 +99,7 @@ func HandlerConnect(conn net.Conn) {
 		// 监听 channel 上的数据流动
 		select {
 		case <-isQuit:
+			close(clnt.C)
 			delete(onlineMap, clnt.Addr)       // 将用户从 online移除
 			message <- MakeMsg(clnt, "logout") // 写入用户退出消息到全局channel
 			return
