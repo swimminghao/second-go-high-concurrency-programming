@@ -2,14 +2,14 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"net/http"
 	"io"
+	"net/http"
 	"regexp"
+	"strconv"
 )
 
 // 获取一个网页所有的内容， result 返回
-func HttpGet(url string) (result string, err error) {
+func HttpGet12(url string) (result string, err error) {
 	resp, err1 := http.Get(url)
 	if err1 != nil {
 		err = err1
@@ -32,14 +32,14 @@ func HttpGet(url string) (result string, err error) {
 }
 
 // 抓取一个网页，带有 10 个段子 —— 10 URL
-func SpiderPage(idx int)  {
+func SpiderPage1(idx int) {
 	// 拼接URL
 	url := "https://www.pengfu.com/xiaohua_" + strconv.Itoa(idx) + ".html"
 
 	// 封装函数获取段子的URL
-	result, err := HttpGet(url)
+	result, err := HttpGet12(url)
 	if err != nil {
-		fmt.Println("HttpGet err:", err)
+		fmt.Println("HttpGet12 err:", err)
 		return
 	}
 	// 解析、编译正则
@@ -53,15 +53,15 @@ func SpiderPage(idx int)  {
 	}
 }
 
-func toWork(start, end int)  {
+func toWork1(start, end int) {
 	fmt.Printf("正在爬取 %d 到 %d 页...\n", start, end)
 
-	for i:=start; i<=end; i++ {
-		SpiderPage(i)
+	for i := start; i <= end; i++ {
+		SpiderPage1(i)
 	}
 }
 
-func main()  {
+func main() {
 	// 指定爬取起始、终止页
 	var start, end int
 	fmt.Print("请输入爬取的起始页（>=1）:")
@@ -69,5 +69,5 @@ func main()  {
 	fmt.Print("请输入爬取的终止页（>=start）:")
 	fmt.Scan(&end)
 
-	toWork(start, end)
+	toWork1(start, end)
 }

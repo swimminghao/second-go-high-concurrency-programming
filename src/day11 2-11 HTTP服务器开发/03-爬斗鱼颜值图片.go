@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"strconv"
-	"net/http"
 	"io"
-	"regexp"
+	"net/http"
 	"os"
+	"regexp"
+	"strconv"
 )
 
-func SaveImg(idx int, url string, page chan int)  {
-	path :="C:/itcast/img/" + strconv.Itoa(idx+1) + ".jpg"
+func SaveImg(idx int, url string, page chan int) {
+	path := "./img/" + strconv.Itoa(idx+1) + ".jpg"
 	f, err := os.Create(path)
 	if err != nil {
 		fmt.Println(" http.Get err:", err)
@@ -39,13 +39,13 @@ func SaveImg(idx int, url string, page chan int)  {
 	page <- idx
 }
 
-func main()  {
+func main() {
 	url := "https://www.douyu.com/g_yz"
 
 	// 爬取 整个页面，将整个页面全部信息，保存在result
 	result, err := HttpGet(url)
 	if err != nil {
-		fmt.Println("HttpGet err:", err)
+		fmt.Println("HttpGet12 err:", err)
 		return
 	}
 	// 解析编译正则
@@ -61,11 +61,12 @@ func main()  {
 		go SaveImg(idx, imgURL[1], page)
 	}
 
-	for i:=0; i<n; i++ {
-		fmt.Printf("下载第 %d 张图片完成\n", <- page)
+	for i := 0; i < n; i++ {
+		fmt.Printf("下载第 %d 张图片完成\n", <-page)
 	}
 
 }
+
 // 获取一个网页所有的内容， result 返回
 func HttpGet(url string) (result string, err error) {
 	resp, err1 := http.Get(url)
