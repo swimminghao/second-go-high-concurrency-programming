@@ -48,6 +48,7 @@ func main() {
 					fmt.Println("conn.Write err:", err)
 					return
 				}
+
 			}
 		}
 	}()
@@ -88,4 +89,5 @@ func main() {
 
 	wg.Wait()
 	fmt.Println("客户端退出")
+
 }

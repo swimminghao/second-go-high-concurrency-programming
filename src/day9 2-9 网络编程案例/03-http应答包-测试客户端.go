@@ -21,7 +21,8 @@ func main()  {
 	errFunc2(err, "Dial")
 	defer conn.Close()
 
-	httpRequest := "GET /itcast88 HTTP/1.1\r\nHost:127.0.0.1:8000\r\n\r\n"
+	//请求行 请求头 空行
+	httpRequest := "GET /itcast HTTP/1.1\r\nHost:127.0.0.1:8000\r\n\r\n"
 
 	conn.Write([]byte(httpRequest))
 
