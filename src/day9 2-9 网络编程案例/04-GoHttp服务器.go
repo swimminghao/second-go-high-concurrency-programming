@@ -24,5 +24,5 @@ func main()  {
 	http.HandleFunc("/", myHandle)
 
 	// 绑定服务器监听地址
-	http.ListenAndServe("127.0.0.1:8000", nil)
+	http.ListenAndServe("127.0.0.1:8001", nil)
 }

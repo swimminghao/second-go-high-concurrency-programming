@@ -6,8 +6,8 @@ import (
 	"os"
 )
 
-func OpenSendFile(fNmae string, w http.ResponseWriter)  {
-	pathFileName := "C:/itcast/test" + fNmae
+func OpenSendFile(fName string, w http.ResponseWriter)  {
+	pathFileName := "/Users/xh/Downloads" + fName
 	f, err := os.Open(pathFileName)
 	if err != nil {
 		fmt.Println("Open err:", err)
@@ -35,5 +35,5 @@ func main()  {
 	// 注册回调函数
 	http.HandleFunc("/", myHandler)
 	// 绑定监听地址
-	http.ListenAndServe("127.0.0.1:8000", nil)
+	http.ListenAndServe("127.0.0.1:8001", nil)
 }

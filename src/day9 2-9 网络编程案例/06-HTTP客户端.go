@@ -9,10 +9,11 @@ import (
 func main()  {
 	// 使用Get方法获取服务器响应包数据
 	//resp, err := http.Get("http://www.baidu.com")
-	resp, err := http.Get("http://127.0.0.1:8000/hello")
+	//resp, err := http.Get("http://127.0.0.1:8000/hello")
+	resp, err := http.Get("www.baidu.com")
 	if err != nil {
 		fmt.Println("Get err:", err)
-		return
+		return 
 	}
 	defer resp.Body.Close()
 
